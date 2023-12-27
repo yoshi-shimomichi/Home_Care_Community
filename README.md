@@ -45,3 +45,5 @@ SNS、在宅介護に関するブログ投稿者へ宣伝を行う
 ■ 機能の実装方針予定
 
 
+画面遷移図
+https://www.figma.com/file/dj8vmZ9KaOzfdnUWpWPZRt/graduation_exam?type=design&node-id=0%3A1&mode=design&t=3bT11jtXSI79Fg3r-1
