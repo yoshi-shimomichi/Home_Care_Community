@@ -6,9 +6,4 @@
 
 import "@hotwired/turbo-rails"
 import "controllers"
-
-$(function(){
-    alert("jQuery 動いた！")
-  })
-  
   
