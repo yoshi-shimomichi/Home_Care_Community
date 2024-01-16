@@ -14,4 +14,11 @@ ja:
     create_post: 新規投稿
     mypage: マイページ
     notification: 通知
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録できませんでした
     
