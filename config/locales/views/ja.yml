@@ -32,3 +32,16 @@ ja:
       failure: ログインに失敗しました
     destroy:
       success: ログアウトしました
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      submit: 送信
+    edit:
+      title: パスワードリセット
+      button: 更新する
+    create:
+      success: パスワードリセットメールを送信しました
+    update:
+      success: パスワードを変更しました
+      failure: パスワードが変更されませんでした
+    send_mail: パスワードリセット

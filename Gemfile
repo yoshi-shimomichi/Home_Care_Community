@@ -55,11 +55,16 @@ gem 'jquery-rails'
 gem 'sorcery'   #Userモデル・ログイン・ログアウト
 gem 'rails-i18n'  #日本語化
 gem 'carrierwave' #画像アップロード
+gem 'config'  #LetterOpenerWeb
+
 
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'letter_opener_web', '~> 2.0' #開発環境で実際にメールが送られないようにする
+  # http://localhost:3000/letter_opener
 end
 
 group :development do
