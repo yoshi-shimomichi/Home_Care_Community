@@ -39,7 +39,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def default_avatar_url # デフォルトの画像ファイル
+  def default_url # デフォルトの画像ファイル
     'default_avatar.png'
   end
 

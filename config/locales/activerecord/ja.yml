@@ -10,3 +10,4 @@ ja:
         password_confirmation: 'パスワード確認'
         name: 'ユーザー名'
         bio: '自己紹介文'
+        avatar: アバター

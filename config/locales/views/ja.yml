@@ -45,3 +45,13 @@ ja:
       success: パスワードを変更しました
       failure: パスワードが変更されませんでした
     send_mail: パスワードリセット
+  profiles:
+    show:
+      title: プロフィール
+      button: 編集
+    edit:
+      title: プロフィール編集
+    update:
+      title: プロフィール編集
+      success: ユーザーを更新しました
+      failure: ユーザーを更新出来ませんでした

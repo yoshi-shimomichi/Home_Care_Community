@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index new create edit update]
   resources :password_resets, only: %i[new create edit update]
+  resource :profile, only: %i[show edit update]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
