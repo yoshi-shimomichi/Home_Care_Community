@@ -1,8 +1,13 @@
 <% content_for(:title, t('.title')) %>
+<div class="row">
+<div class="col-2">
+<%= render 'shared/sideber' %>
+</div>
+<div class="col-9">
 <div class="container pt-3">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1><%= t('.title') %></h1>
+      <h1 class="float-left mb-5"><%= t('.title') %></h1>
       <%= form_with model: @user, url: profile_path, method: :put do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="row">
@@ -11,8 +16,10 @@
                           class: 'rounded-circle',
                           id: 'preview',
                           size: '200x200' %>
-            <%= f.file_field :avatar, class: "form-control", accept: 'image/*' %>
-            <%= f.hidden_field :avatar_cache %>
+            <%= f.label :avatar, class: "far fa-image" do %>
+              <%= f.file_field :avatar, class: "form-control", accept: 'image/*', style:"display:none;" %>
+              <%= f.hidden_field :avatar_cache %>
+            <% end %>
           </div>
           <div class="col-8">
             <div class="row">
@@ -39,3 +46,4 @@
   </div>
 </div>
 
+</div>

@@ -1,0 +1,36 @@
+<nav id="sidebarMenu" class="d-md-block bg-light sidebar">
+  <div class="position-sticky pt-3 sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+      <%= link_to profile_path, class: "nav-link" do %>
+        <i class="bi bi-file-earmark"></i>
+          <%= t('sideber.profile') %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+        <i class="bi bi-person"></i>
+          <%= t('sideber.care_person') %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+      <%= link_to "#", class: "nav-link" do %>
+      <i class="bi bi-person"></i>
+        <%= t('sideber.post_question') %>
+      <% end %>
+    </li>
+    <li class="nav-item">
+    <%= link_to "#", class: "nav-link" do %>
+    <i class="bi bi-person"></i>
+      <%= t('sideber.post_tweet') %>
+    <% end %>
+  </li>
+  <li class="nav-item">
+  <%= link_to "#", class: "nav-link" do %>
+  <i class="bi bi-person"></i>
+    <%= t('sideber.favorite') %>
+  <% end %>
+</li>
+    </ul>
+  </div>
+</nav>

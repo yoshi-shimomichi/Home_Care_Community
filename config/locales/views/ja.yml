@@ -14,6 +14,12 @@ ja:
     create_post: 新規投稿
     mypage: マイページ
     notification: 通知
+  sideber:
+    profile: プロフィール
+    care_person: 要介護者
+    post_question: 質問投稿
+    post_tweet: つぶやき投稿
+    favorite: お気に入り
   users:
     new:
       title: ユーザー登録
@@ -55,3 +61,4 @@ ja:
       title: プロフィール編集
       success: ユーザーを更新しました
       failure: ユーザーを更新出来ませんでした
+  
