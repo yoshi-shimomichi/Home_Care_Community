@@ -1,0 +1,19 @@
+<%= form_with model: @post do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-3">
+      <%= f.radio_button :post_type, :question %>
+      <%= f.label :post_type_question, "質問", class: "" %>
+      <%= f.radio_button :post_type, :tweet %>
+      <%= f.label :post_type_tweet, "つぶやき", class: "" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control", row: "10", style: "height: 200px" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :post_image %>
+      <%= f.file_field :post_image, class: "form-control", accept: 'image/*' %>
+      <%= f.hidden_field :post_image_cache %>
+    </div>
+    <%= f.submit nil, class: "btn btn-primary" %>
+  <% end %>
