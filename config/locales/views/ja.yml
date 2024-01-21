@@ -7,6 +7,22 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  enum:
+    care_person:
+      sex:
+        no_enter_sex: 未登録
+        male: 男性
+        female: 女性
+      care_level:
+        no_enter_care_level: 未登録
+        self: 自立
+        support_1: 要支援1
+        support_2: 要支援2
+        care_1: 要介護1
+        care_2: 要介護2
+        care_3: 要介護3
+        care_4: 要介護4
+        care_5: 要介護5
   header:
     login: ログイン
     create_user: 新規登録 

@@ -11,3 +11,9 @@ ja:
         name: 'ユーザー名'
         bio: '自己紹介文'
         avatar: アバター
+      care_person:
+        age: 年齢
+        sex: 性別
+        care_level: 要介護度
+        bio: 被介護者情報
+        

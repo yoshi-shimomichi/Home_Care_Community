@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_17_012927) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_063953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "care_people", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "age"
+    t.integer "sex", default: 0
+    t.integer "care_level", default: 0
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_care_people_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -31,4 +42,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_17_012927) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "care_people", "users"
 end
