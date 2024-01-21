@@ -16,4 +16,8 @@ ja:
         sex: 性別
         care_level: 要介護度
         bio: 被介護者情報
+      post:
+        post_type: 投稿タイプ
+        body: 本文
+        post_image: 画像
         
