@@ -3,7 +3,12 @@ class PostsController < ApplicationController
     skip_before_action :require_login, only: %i[index show]
   
     def index
-      @posts = Post.all.includes(:user).order(created_at: :desc)
+      if params[:tag_id].present?
+        @posts = Tag.find(params[:tag_id]).posts.order(created_at: :desc)
+      else
+        @posts = Post.includes(:user).order(created_at: :desc)
+      end
+      @tag_list = Tag.all
     end
   
     def new
@@ -12,25 +17,31 @@ class PostsController < ApplicationController
   
     def edit
       @post = Post.find(params[:id])
+      @tag_list = @post.tags.pluck(:name).join(' ')
     end
   
     def create
       @post = current_user.posts.build(post_params)
-  
+      tag_list = params[:post][:name].split
       if @post.save
+        @post.save_tag(tag_list)
         redirect_to posts_path, success: t('.success', item: Post.model_name.human)
       else
         flash.now[:danger] = t('.failure', item: Post.model_name.human)
+        @tag_list = tag_list.join(' ')
         render :new, status: :unprocessable_entity
       end
     end
   
     def update
       @post = Post.find(params[:id])
+      tag_list = params[:post][:name].split
       if @post.update(post_params)
+        @post.save_tag(tag_list)
         redirect_to post_path(@post), success: t('.success')
       else
         flash.now[:danger] = t('.failure')
+        @tag_list = tag_list.join(' ')
         render :edit, status: :unprocessable_entity
       end
     end

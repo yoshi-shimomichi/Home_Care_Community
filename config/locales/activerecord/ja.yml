@@ -19,5 +19,6 @@ ja:
       post:
         post_type: 投稿タイプ
         body: 本文
+        name: タグ
         post_image: 画像
         
