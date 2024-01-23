@@ -7,7 +7,11 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
-  enum:
+  enums:
+    post:
+      post_type:
+        question: 質問
+        tweet: つぶやき
     care_person:
       sex:
         no_enter_sex: 未登録
