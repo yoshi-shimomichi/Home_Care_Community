@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    
+    <%= image_tag @post.user.avatar.url, class: 'post_index_image' %>
+    <div class="col">
+      <ul class="list-inline">
+        <li><i class="bi bi-person"></i><%= @post.user.name %></li>
+        <li><i class="bi bi-calendar"></i><%= l @post.created_at, format: :short %></li>
+      </ul>
+    </div>
+      <% if current_user&.own?(@post) %>
+        <div class="text-end">
+          <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+          <%= link_to '削除',
+                      post_path(@post),
+                      class: 'btn btn-danger btn-sm',
+                      method: :delete,
+                      data: { confirm: '削除します' } %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-body mb-1">
+      <%= simple_format(@post.body) %>
+    </div>
+    
+    <% if @post.post_image.present? %>
+      <%= image_tag @post.post_image.url, width: '100%', height: '100%' %>
+    <% end %>
+    <% if @post.tags.present? %> 
+      <div class="card-footer">
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "badge rounded-pill bg-primary text-decoration-none text-white" %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      コメント
+    </div>
+
+<%
+=begin
+%>
+    <div class="card-body">
+      <%= form_with model: [@post, @comment] do |f| %>
+        <%= render 'shared/error_message', object: f.object %>
+        <div class="mb-3">
+          <%= f.label :body %>
+          <%= f.text_area :body, rows: 5, class: 'form-control' %>
+        </div>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+      <hr>
+      <div class="p-5">
+        <ul class="list-unstyled">
+          <%= render partial: 'posts/comments/comment', collection: @post.comments.order(created_at: :desc) %>
+        </ul>
+      </div>
+    </div>
+<%
+=end
+%>
+  </div>
+</div>

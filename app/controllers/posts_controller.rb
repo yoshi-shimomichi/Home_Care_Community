@@ -10,7 +10,11 @@ class PostsController < ApplicationController
       end
       @tag_list = Tag.all
     end
-  
+
+    def show
+      @post = Post.find(params[:id])
+    end
+
     def new
       @post = Post.new
     end
