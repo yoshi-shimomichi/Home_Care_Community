@@ -15,8 +15,8 @@
           <%= link_to '削除',
                       post_path(@post),
                       class: 'btn btn-danger btn-sm',
-                      method: :delete,
-                      data: { confirm: '削除します' } %>
+                      data: { turbo_method: :delete, 
+                      turbo_confirm: t('boards.delete.comfirm') }  %>
         </div>
       <% end %>
     </div>
@@ -25,7 +25,7 @@
     </div>
     
     <% if @post.post_image.present? %>
-      <%= image_tag @post.post_image.url, width: '100%', height: '100%' %>
+      <%= image_tag @post.post_image.url, class: 'post_show_image' %>
     <% end %>
     <% if @post.tags.present? %> 
       <div class="card-footer">

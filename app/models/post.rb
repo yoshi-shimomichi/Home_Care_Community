@@ -5,7 +5,9 @@ class Post < ApplicationRecord
 
   mount_uploader :post_image, AvatarUploader
 
+  validates :post_type, presence: true
   validates :body, length: { maximum: 65_535 }, presence: true
+  
 
   enum post_type: { question: 0, tweet: 1 }
 
