@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resource :profile, only: %i[show edit update]
   resource :care_persons, only: %i[new create show edit update]
-  resources :posts
+  resources :posts do
+    resources :comments, only: %i[create destroy], shallow: true
+  end
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

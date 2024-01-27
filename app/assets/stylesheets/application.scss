@@ -27,8 +27,8 @@ header{
 }
 
 .post_index_image{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
 }
 
 .post_type_question{
@@ -57,7 +57,13 @@ header{
     border-radius: 5px;
 }
 
-#post_image_prev{
+#edit_image_prev{
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+#image_prev img{
     width: 100%;
     max-height: 500px;
     object-fit: contain;

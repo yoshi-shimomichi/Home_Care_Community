@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :care_persons, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }

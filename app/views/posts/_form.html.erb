@@ -24,6 +24,6 @@
       <%= f.file_field :post_image, class: "form-control mb-3", id: 'post_prev', accept: 'image/*' %>
       <%= f.hidden_field :post_image_cache %>
     </div>
-    <div id="image-prev"></div>
+    <div id="image_prev"></div>
 <% end %>
 <%= image_tag post.post_image.url, id: 'edit_image_prev' if post.post_image.present? %>

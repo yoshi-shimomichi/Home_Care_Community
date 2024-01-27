@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
   document.addEventListener('DOMContentLoaded', function(){
     // プレビューを表示するための要素を取得
-    const ImageList = document.getElementById('image-prev');
+    const ImageList = document.getElementById('image_prev');
 
     const createImageHTML = (blob) => {
       // 画像を表示するためのdiv要素を生成
