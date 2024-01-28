@@ -1,0 +1,39 @@
+<div class="container", id="comment-<%= comment.id %>">
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <%= image_tag comment.user.avatar.url, width: '50', height: '50'  %>
+      <div class="col">
+        <ul class="list-inline">
+          <li><i class="bi bi-person"></i><%= comment.user.name %></li>
+          <li><i class="bi bi-calendar"></i><%= l comment.created_at, format: :short %></li>
+        </ul>
+      </div>
+      <% if current_user&.own?(comment) %>
+        <div class="text-end">
+          <%= link_to '編集', edit_comment_path(comment), class: 'btn btn-success btn-sm edit-comment-link' %>
+          <%= link_to '削除',
+                      comment_path(comment),
+                      class: 'btn btn-danger btn-sm delete-comment-link',
+                      data: { turbo_method: :delete, 
+                      turbo_confirm: t('boards.delete.comfirm') }  %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-body">
+    <%= form_with model: [@post, @comment] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="mb-3">
+        <%= f.text_area :body, value: comment.body, class: 'form-control mb-1' %>
+        <div class="row d-flex justify-content-between">
+          <div class="col">
+            <%= f.file_field :comment_image, class: "form-control mb-3", accept: 'image/*' %>
+            <%= f.hidden_field :comment_image_cache %>
+          </div>
+          <div class="col-2">
+            <%= f.submit "更新する", class: 'btn btn-primary' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  </div>
+</div>
