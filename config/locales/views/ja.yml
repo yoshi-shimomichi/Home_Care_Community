@@ -105,3 +105,11 @@ ja:
       success: 掲示板を削除しました
     bookmarks:
       title: ブックマーク一覧
+  comment:
+    create:
+    edit:
+      title: コメント編集
+    update:
+      success: 掲示板を編集しました
+    delete:
+      comfirm: 削除しますか

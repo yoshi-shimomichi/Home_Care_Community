@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="card mb-5" id="comment-<%= comment.id %>">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= image_tag comment.user.avatar.url, width: '50', height: '50'  %>
@@ -10,14 +10,14 @@
       </div>
       <% if current_user&.own?(comment) %>
         <div class="text-end">
-          <%= link_to edit_comment_path(comment), class: 'edit-comment-link' do %>
+          <%= link_to edit_post_comment_path(comment.post, comment), class: 'edit-comment-link' do %>
             <div class="btn btn-success btn-sm">編集</div>
           <% end %>
           <%= link_to '削除',
-                      comment_path(comment),
-                      class: 'btn btn-danger btn-sm delete-comment-link',
+                      post_comment_path(comment.post, comment),
+                      class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
-                      turbo_confirm: t('boards.delete.comfirm') }  %>
+                      turbo_confirm: t('posts.delete.comfirm') }  %>
         </div>
       <% end %>
     </div>
@@ -26,4 +26,4 @@
       <%= image_tag comment.comment_image.url, width: '100' if comment.comment_image.present? %>
     </div>
   </div>
-</div>
+
