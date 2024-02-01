@@ -1,26 +1,29 @@
-<tr id="comment-<%= comment.id %>">
-  <td style="width: 60px">
-    <%= image_tag comment.user.avatar.url, class: 'rounded-circle', width: '50', height: '50' %>
-  </td>
-  <td>
-    <h3 class="small"><%= comment.user.name %> </h3>
-      <p><%= simple_format(comment.body) %></p>
+
+  <div class="card mb-5" id="comment-<%= comment.id %>">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <%= image_tag comment.user.avatar.url, width: '50', height: '50'  %>
+      <div class="col">
+        <ul class="list-inline">
+          <li><i class="bi bi-person"></i><%= comment.user.name %></li>
+          <li><i class="bi bi-calendar"></i><%= l comment.created_at, format: :short %></li>
+        </ul>
+      </div>
+      <% if current_user&.own?(comment) %>
+        <div class="text-end">
+          <%= link_to edit_post_comment_path(comment.post, comment), class: 'edit-comment-link' do %>
+            <div class="btn btn-success btn-sm">編集</div>
+          <% end %>
+          <%= link_to '削除',
+                      post_comment_path(comment.post, comment),
+                      class: 'btn btn-danger btn-sm',
+                      data: { turbo_method: :delete, 
+                      turbo_confirm: t('posts.delete.comfirm') }  %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-body mb-1">
+      <%= simple_format(comment.body) %>
       <%= image_tag comment.comment_image.url, width: '100' if comment.comment_image.present? %>
-  </td>
-  <% if current_user.own?(comment) %>
-    <td class="action">
-      <ul class="list-inline justify-content-center" style="float: right;">
-        <li class="list-inline-item">
-          <%= link_to '#', class: 'edit-comment-link' do %>
-            編集
-          <% end %>
-        </li>
-        <li class="list-inline-item">
-          <%= link_to comment_path(comment), class: "delete-comment-link", data: { turbo_method: :delete, turbo_confirm: t('comments.delete.comfirm') } do %>
-            削除
-          <% end %>
-        </li>
-      </ul>
-    </td>
-  <% end %>
-</tr>
+    </div>
+  </div>
+

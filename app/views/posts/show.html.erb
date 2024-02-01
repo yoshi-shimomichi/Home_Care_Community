@@ -1,14 +1,13 @@
 <div class="container">
   <div class="card mb-5">
     <div class="card-header d-flex justify-content-between align-items-center">
-    
-    <%= image_tag @post.user.avatar.url, class: 'post_index_image' %>
-    <div class="col">
-      <ul class="list-inline">
-        <li><i class="bi bi-person"></i><%= @post.user.name %></li>
-        <li><i class="bi bi-calendar"></i><%= l @post.created_at, format: :short %></li>
-      </ul>
-    </div>
+      <%= image_tag @post.user.avatar.url, class: 'post_index_image' %>
+      <div class="col">
+        <ul class="list-inline">
+          <li><i class="bi bi-person"></i><%= @post.user.name %></li>
+          <li><i class="bi bi-calendar"></i><%= l @post.created_at, format: :short %></li>
+        </ul>
+      </div>
       <% if current_user&.own?(@post) %>
         <div class="text-end">
           <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success btn-sm' %>
@@ -16,14 +15,13 @@
                       post_path(@post),
                       class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
-                      turbo_confirm: t('boards.delete.comfirm') }  %>
+                      turbo_confirm: t('posts.delete.comfirm') }  %>
         </div>
       <% end %>
     </div>
     <div class="card-body mb-1">
       <%= simple_format(@post.body) %>
     </div>
-    
     <% if @post.post_image.present? %>
       <%= image_tag @post.post_image.url, class: 'post_show_image' %>
     <% end %>
@@ -35,14 +33,26 @@
       </div>
     <% end %>
   </div>
-  <%= render 'comments/form',post: @post, comment: @comment %>
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <table class="table">
-        <tbody id="table-comment">
-          <%= render @comments %>
-        </tbody>
-      </table>
+  <div class="card">
+    <div class="card-header">
+      コメント
     </div>
+  <div class="card-body" >
+    <% if logged_in? %>
+      <%= render 'comments/form',post: @post, comment: @comment %>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <table class="table">
+            <tbody id="table-comment">
+              <div class="container">
+                <%= render @comments, post: @post %>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% else %>
+      <p> コメントはログイン後に閲覧できます </p>
+    <% end %>
   </div>
 </div>

@@ -65,6 +65,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'letter_opener_web', '~> 2.0' #開発環境で実際にメールが送られないようにする
+
+  gem 'pry-rails'
   # http://localhost:3000/letter_opener
 end
 

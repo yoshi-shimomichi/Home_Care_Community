@@ -7,6 +7,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./custom/preview"
+import "./custom/comment"
 
 /*
 // プレビュー

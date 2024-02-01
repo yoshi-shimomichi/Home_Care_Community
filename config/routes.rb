@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resource :care_persons, only: %i[new create show edit update]
   resources :posts do
-    resources :comments, only: %i[create destroy], shallow: true
+    resources :comments, only: %i[edit create destroy update]
   end
 
   get 'login', to: 'user_sessions#new'
