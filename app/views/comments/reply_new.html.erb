@@ -1,0 +1,11 @@
+<%= form_with model:[@post, @comment, @comment_reply], local: true do |f|%>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.text_field :body, class:"input input-bordered w-full bg-gray-600" %>
+    <%= f.file_field :comment_image, class: "form-control mb-3", accept: 'image/*' %>
+    <%= f.hidden_field :comment_image_cache %>
+    <%= f.hidden_field :comment_parent_id, value: @comment.id %>
+    <div class="flex justify-end text-xs mt-1">
+      <%= link_to 'キャンセル', post_path(@comment.post), class: 'btn' %>
+      <%= f.submit "コメント", class:"ml-2" %>
+    </div>
+  <% end %>

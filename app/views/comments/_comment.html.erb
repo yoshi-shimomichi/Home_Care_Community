@@ -1,4 +1,5 @@
-
+<% post.comments.each do |comment| %>
+  <% if !comment.parent_id %>
   <div class="card mb-5" id="comment-<%= comment.id %>">
     <div class="card-header d-flex justify-content-between align-items-center">
       <%= image_tag comment.user.avatar.url, width: '50', height: '50'  %>
@@ -25,5 +26,21 @@
       <%= simple_format(comment.body) %>
       <%= image_tag comment.comment_image.url, width: '100' if comment.comment_image.present? %>
     </div>
+    <div class="card-footer">
+      <%= link_to new_post_comment_path(post, comment, parent_id: comment.id), class: 'reply-comment-link' do %>
+        <div class="btn btn-success btn-sm float-end">返信する</div>
+      <% end %>
+    </div>
+  <% end %>
+
+    <% if comment.replies.any?%>
+      <% comment.replies.each do |reply| %>
+
+          <%= render partial: 'comments/reply', locals: { reply: reply } %>
+      
+      <% end %>
+    <% end %>
+
   </div>
 
+  <% end %>

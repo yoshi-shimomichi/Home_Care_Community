@@ -1,0 +1,2 @@
+class ReplyCommentsController < ApplicationController
+end

@@ -105,7 +105,7 @@ ja:
       success: 掲示板を削除しました
     bookmarks:
       title: ブックマーク一覧
-  comment:
+  comments:
     create:
     edit:
       title: コメント編集
