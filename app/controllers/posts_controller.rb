@@ -3,12 +3,10 @@ class PostsController < ApplicationController
     skip_before_action :require_login, only: %i[index show]
   
     def index
-      if params[:tag_id].present?
-        @posts = Tag.find(params[:tag_id]).posts.order(created_at: :desc)
-      else
-        @posts = Post.includes(:user).order(created_at: :desc)
-      end
-      @tag_list = Tag.all
+#      @q = Post.ransack(params[:q])
+#      @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+       @posts = Post.includes(:user).order(created_at: :desc)
+
     end
 
     def show
@@ -57,6 +55,37 @@ class PostsController < ApplicationController
       @post.destroy!
       redirect_to posts_path, success: t('.success'), status: :see_other
     end
+
+    def search
+      keyword_result = []
+      i = 1
+      unless params[:keyword].blank?
+        keyword_array = params[:keyword].split(/[[:blank:]]+/)        
+        keyword_array.each do |keyword|
+          next if keyword.blank?
+          post_ids = Post.where('body LIKE ?', "%#{keyword}%").pluck(:id)
+          tag_ids = Tag.where('name LIKE ?', "%#{keyword}%").pluck(:id)
+          post_tag_ids = PostTag.where(tag_id: tag_ids).pluck(:post_id)
+          keyword_array = post_ids | post_tag_ids
+          if i == 1
+            keyword_result += keyword_array
+          else
+            keyword_result &= keyword_array
+          end
+          i += 1
+        end
+      else
+        keyword_result = Post.all.pluck(:id)
+      end
+
+      select_post_type = params[:post_type].blank? ? Post.all.pluck(:id) : Post.where(post_type: params[:post_type]).pluck(:id)
+
+      result = keyword_result & select_post_type
+    
+      @posts = Post.includes(:user).where(id: result).order(created_at: :desc)
+    end
+
+    private
   
     def post_params
       params.require(:post).permit(:post_type, :body, :post_image, :post_image_cache, :remove_post_image)

@@ -9,8 +9,24 @@ class Post < ApplicationRecord
   validates :post_type, presence: true
   validates :body, length: { maximum: 65_535 }, presence: true
   
-
   enum post_type: { question: 0, tweet: 1 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[body post_type tag_name]
+  end
+
+  ransacker :tag_name, formatter: proc { |v|
+  tags = Tag.where(name: v).pluck(:id)
+  posts = Post.joins(:tags).where(tags: { id: tags }).pluck(:id)
+  posts.present? ? posts : nil
+  } do |parent|
+    parent.table[:id]
+  end
+
+ # def self.ransackable_associations(auth_object = nil)
+ #   ["tag"]
+ # end
+
 
   def save_tag(sent_tags)
     current_tags = tags.pluck(:name) unless tags.nil?

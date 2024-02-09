@@ -58,6 +58,8 @@ gem 'enum_help'
 gem 'carrierwave' #画像アップロード
 gem 'config'  #LetterOpenerWeb
 
+gem 'ransack' #検索
+
 
 
 group :development, :test do
