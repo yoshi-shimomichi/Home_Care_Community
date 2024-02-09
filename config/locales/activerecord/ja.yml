@@ -23,3 +23,8 @@ ja:
         post_image: 画像
       comment:
         body: コメント
+  enums:
+    post:
+      post_type:
+        question: 質問
+        tweet: つぶやき

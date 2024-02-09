@@ -13,11 +13,9 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resource :care_persons, only: %i[new create show edit update]
   resources :posts do
-    resources :comments do
-      member do
-        get :reply_new
-        post :reply_create
-      end
+    resources :comments
+    collection do
+      get 'search', to:'posts#search'
     end
   end
 
