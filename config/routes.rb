@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get 'search', to:'posts#search'
+      get  'autocomplete_word', to:'posts#autocomplete_word'
     end
   end
 
