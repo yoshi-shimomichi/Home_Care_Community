@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :comments, dependent: :destroy
+  has_many :post_favorites, dependent: :destroy
 
   mount_uploader :post_image, AvatarUploader
 
@@ -11,22 +12,9 @@ class Post < ApplicationRecord
   
   enum post_type: { question: 0, tweet: 1 }
 
-  def self.ransackable_attributes(auth_object = nil)
-    %w[body post_type tag_name]
+  def post_favorited_by?(user)
+    post_favorites.where(user_id: user).exists?
   end
-
-  ransacker :tag_name, formatter: proc { |v|
-  tags = Tag.where(name: v).pluck(:id)
-  posts = Post.joins(:tags).where(tags: { id: tags }).pluck(:id)
-  posts.present? ? posts : nil
-  } do |parent|
-    parent.table[:id]
-  end
-
- # def self.ransackable_associations(auth_object = nil)
- #   ["tag"]
- # end
-
 
   def save_tag(sent_tags)
     current_tags = tags.pluck(:name) unless tags.nil?

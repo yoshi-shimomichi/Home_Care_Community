@@ -51,6 +51,7 @@ gem "sassc-rails"
 #CSS
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.12.0'
 
 gem 'sorcery'   #Userモデル・ログイン・ログアウト
 gem 'rails-i18n'  #日本語化
