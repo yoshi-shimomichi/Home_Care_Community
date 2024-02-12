@@ -18,6 +18,8 @@
                   data: { turbo_method: :delete, 
                   turbo_confirm: t('posts.delete.comfirm') }  %>
     </div>
+    <% else %>
+    <%= render 'comment_favorites/comment_favorite_buttons', { comment: reply } %>
   <% end %>
 </div>
 <div class="card-body mb-1">
