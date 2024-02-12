@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :care_persons, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :post_favorites, dependent: :destroy
+  has_many :favorite_posts, through: :post_favorites, source: :post
+
 
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }
@@ -16,5 +19,17 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object&.user_id
+  end
+
+  def post_favorite_join(post)
+    favorite_posts << post
+  end
+
+  def post_favorite_remove(post)
+    favorite_posts.destroy(post)
+  end
+
+  def favorite_post?(post)
+    favorite_posts.include?(post)
   end
 end

@@ -17,8 +17,11 @@ Rails.application.routes.draw do
     collection do
       get 'search', to:'posts#search'
       get  'autocomplete_word', to:'posts#autocomplete_word'
+      get :post_favorites
     end
   end
+
+  resources :post_favorites, only: %i[create destroy]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
