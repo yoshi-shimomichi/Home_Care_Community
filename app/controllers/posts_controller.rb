@@ -1,12 +1,10 @@
 class PostsController < ApplicationController
     before_action :set_post, only: %i[edit update destroy]
+    before_action :set_tags, only: %i[index search]
     skip_before_action :require_login, only: %i[index show]
   
     def index
-#      @q = Post.ransack(params[:q])
-#      @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc)
        @posts = Post.includes(:user).order(created_at: :desc)
-
     end
 
     def show
@@ -26,7 +24,7 @@ class PostsController < ApplicationController
   
     def create
       @post = current_user.posts.build(post_params)
-      tag_list = params[:post][:name].split
+      tag_list = params[:post][:name].split(/[[:blank:]]+/)  
       if @post.save
         @post.save_tag(tag_list)
         redirect_to posts_path, success: t('.success', item: Post.model_name.human)
@@ -57,6 +55,7 @@ class PostsController < ApplicationController
     end
 
     def search
+      redirect_to posts_path if params[:keyword].blank? && params[:post_type].blank?
       keyword_result = []
       i = 1
       unless params[:keyword].blank?
@@ -64,7 +63,7 @@ class PostsController < ApplicationController
         keyword_array.each do |keyword|
           next if keyword.blank?
           post_ids = Post.where('body LIKE ?', "%#{keyword}%").pluck(:id)
-          tag_ids = Tag.where('name LIKE ?', "%#{keyword}%").pluck(:id)
+          tag_ids = Tag.where('name LIKE ?', "#{keyword}").pluck(:id)
           post_tag_ids = PostTag.where(tag_id: tag_ids).pluck(:post_id)
           keyword_array = post_ids | post_tag_ids
           if i == 1
@@ -85,6 +84,15 @@ class PostsController < ApplicationController
       @posts = Post.includes(:user).where(id: result).order(created_at: :desc)
     end
 
+    def autocomplete_word
+      # オートコンプリートの候補として使いたいデータを取得するためのコード
+      @tags = Tag.where("name LIKE ?", "%#{params[:q]}%").limit(10)
+      puts @tags
+      respond_to do |format|
+        format.js
+      end
+    end
+
     private
   
     def post_params
@@ -93,5 +101,9 @@ class PostsController < ApplicationController
   
     def set_post
       @post = current_user.posts.find(params[:id])
+    end
+
+    def set_tags
+      @tags = Tag.all
     end
   end
