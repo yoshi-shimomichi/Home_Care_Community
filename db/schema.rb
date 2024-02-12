@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_12_054843) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_12_120210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_054843) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_care_people_on_user_id"
+  end
+
+  create_table "comment_favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_favorites_on_comment_id"
+    t.index ["user_id", "comment_id"], name: "index_comment_favorites_on_user_id_and_comment_id", unique: true
+    t.index ["user_id"], name: "index_comment_favorites_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -91,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_054843) do
   end
 
   add_foreign_key "care_people", "users"
+  add_foreign_key "comment_favorites", "comments"
+  add_foreign_key "comment_favorites", "users"
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"

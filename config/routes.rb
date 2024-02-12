@@ -13,15 +13,19 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resource :care_persons, only: %i[new create show edit update]
   resources :posts do
-    resources :comments
+    resources :comments do
+      get :comment_favorites
+    end
     collection do
       get 'search', to:'posts#search'
       get  'autocomplete_word', to:'posts#autocomplete_word'
       get :post_favorites
+      get :comment_favorites
     end
   end
 
   resources :post_favorites, only: %i[create destroy]
+  resources :comment_favorites, only: %i[create destroy]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

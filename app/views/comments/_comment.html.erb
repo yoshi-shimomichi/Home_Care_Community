@@ -20,6 +20,8 @@
                       data: { turbo_method: :delete, 
                       turbo_confirm: t('posts.delete.comfirm') }  %>
         </div>
+      <% else %>
+        <%= render 'comment_favorites/comment_favorite_buttons', { comment: comment } %>
       <% end %>
     </div>
     <div class="card-body mb-1">
@@ -32,15 +34,10 @@
       <% end %>
     </div>
   <% end %>
-
     <% if comment.replies.any?%>
       <% comment.replies.each do |reply| %>
-
           <%= render partial: 'comments/reply', locals: { reply: reply } %>
-      
       <% end %>
     <% end %>
-
   </div>
-
   <% end %>
