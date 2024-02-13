@@ -13,6 +13,10 @@ class ProfilesController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     end
+
+    def questions
+      @posts = Post.where(user_id: current_user.id, post_type: :question)
+    end
   
     private
   
