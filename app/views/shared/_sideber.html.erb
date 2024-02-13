@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="d-md-block bg-light sidebar">
+<nav id="sidebarMenu" class="d-md-block bg-light sidebar" style="font-size: 16px">
   <div class="position-sticky pt-3 sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
@@ -14,7 +14,7 @@
         <% end %>
       </li>
       <li class="nav-item">
-      <%= link_to "#", class: "nav-link" do %>
+      <%= link_to questions_profile_path, class: "nav-link" do %>
       <i class="bi bi-person"></i>
         <%= t('sideber.post_question') %>
       <% end %>

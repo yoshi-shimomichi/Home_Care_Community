@@ -10,16 +10,15 @@
       <h1 class="float-left mb-5"><%= t('.title') %></h1>
       <%= form_with model: @user, url: profile_path, method: :put do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class="row">
-          <div class="col-4">
+        <div class="row mb-3">
+          <div class="col-4 mb-3">
             <%= image_tag @user.avatar.url,
                           class: 'rounded-circle',
                           id: 'preview',
                           size: '200x200' %>
-            <%= f.label :avatar, class: "far fa-image" do %>
-              <%= f.file_field :avatar, class: "form-control", accept: 'image/*', style:"display:none;" %>
-              <%= f.hidden_field :avatar_cache %>
-            <% end %>
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, class: "form-control", accept: 'image/*' %>
+            <%= f.hidden_field :avatar_cache %>
           </div>
           <div class="col">
             <div class="row">
