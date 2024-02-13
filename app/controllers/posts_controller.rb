@@ -85,7 +85,6 @@ class PostsController < ApplicationController
     end
 
     def autocomplete_word
-      # オートコンプリートの候補として使いたいデータを取得するためのコード
       @tags = Tag.where("name LIKE ?", "%#{params[:q]}%").limit(10)
       puts @tags
       respond_to do |format|

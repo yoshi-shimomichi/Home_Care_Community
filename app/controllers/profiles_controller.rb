@@ -17,6 +17,11 @@ class ProfilesController < ApplicationController
     def questions
       @posts = Post.where(user_id: current_user.id, post_type: :question)
     end
+
+    def tweets
+      @posts = Post.where(user_id: current_user.id, post_type: :tweet)
+    end
+
   
     private
   

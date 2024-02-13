@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update] do
     collection do
       get 'questions', to:'profiles#questions'
+      get 'tweets', to:'profiles#tweets'
     end
   end
 
