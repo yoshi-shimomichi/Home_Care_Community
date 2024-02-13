@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     collection do
       get 'questions', to:'profiles#questions'
       get 'tweets', to:'profiles#tweets'
+      get 'comments', to:'profiles#comments'
+      get 'favorites', to:'profiles#favorites'
     end
   end
 

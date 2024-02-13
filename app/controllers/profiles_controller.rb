@@ -22,6 +22,9 @@ class ProfilesController < ApplicationController
       @posts = Post.where(user_id: current_user.id, post_type: :tweet)
     end
 
+    def comments
+      @comments = Comment.where(user_id: current_user.id)
+    end
   
     private
   

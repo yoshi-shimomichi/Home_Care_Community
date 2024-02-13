@@ -1,0 +1,35 @@
+<% comments.each do |comment| %>
+<div class="col-10 mb-4">
+  <div id="comment-<%= comment.id %>">
+    <div class='card mb-3'>
+    <div class="card-header d-flex">
+        <div class="mx-1">
+          <%= image_tag comment.user.avatar.url, class: 'post_index_image' %>
+        </div>
+        <div class="col-2 mx-1">
+          <ul class="list-inline">
+            <li><%= comment.user.name %></li>
+            <li><%= l comment.created_at, format: :short %></li>
+          </ul>
+        </div>
+        <div class="ms-auto">
+          <%= link_to '詳細', post_path(comment.post), class: 'btn btn-primary btn-sm' %>
+          <% if current_user&.own?(comment) %>
+          <%= link_to edit_post_comment_path(comment.post, comment), class: 'edit-comment-link' do %>
+            <div class="btn btn-success btn-sm">編集</div>
+          <% end %>
+          <%= link_to '削除',
+                      post_comment_path(comment.post, comment),
+                      class: 'btn btn-danger btn-sm',
+                      data: { turbo_method: :delete, 
+                      turbo_confirm: t('posts.delete.comfirm') }  %>
+          <% end %>
+        </div>
+    </div>
+      <div class="card-body">
+        <%= comment.body %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

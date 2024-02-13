@@ -1,0 +1,47 @@
+<% posts.each do |post| %>
+<div class="col-10 mb-4">
+  <div id="post-id-<%= post.id %>">
+    <div class='card mb-3'>
+    <div class="card-header d-flex">
+        <div class="mx-1">
+          <%= image_tag post.user.avatar.url, class: 'post_index_image' %>
+        </div>
+        <div class="col-2 mx-1">
+          <ul class="list-inline">
+            <li><%= post.user.name %></li>
+            <li><%= l post.created_at, format: :short %></li>
+          </ul>
+        </div>
+        <div class="col">
+          <% if post.question? %>
+            <span class="post_type_question"><%= post.post_type_i18n %></span>
+          <% else %>
+            <span class="post_type_tweet"><%= post.post_type_i18n %></span>
+          <% end %>
+        </div>
+        <div class="ms-auto">
+          <%= link_to '詳細', post_path(post), class: 'btn btn-primary btn-sm' %>
+          <% if current_user&.own?(post) %>
+          <%= link_to '編集', edit_post_path(post), class: 'btn btn-success btn-sm' %>
+          <%= link_to '削除',
+                      post_path(post),
+                      class: 'btn btn-danger btn-sm',
+                      data: { turbo_method: :delete, 
+                      turbo_confirm: t('posts.delete.comfirm') }  %>
+      <% end %>
+      </div>
+    </div>
+      <div class="card-body">
+        <%= post.body %>
+      </div>
+      <div class="card-footer">
+        <% if post.tags.present? %> 
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name, posts_path(tag_id: tag.id), class: "badge rounded-pill bg-primary text-decoration-none text-white" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
