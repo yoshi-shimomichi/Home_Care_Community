@@ -41,7 +41,9 @@ ja:
     care_person: 要介護者
     post_question: 質問投稿
     post_tweet: つぶやき投稿
-    favorite: お気に入り
+    comment: コメント
+    favorite_post: お気に入り投稿
+    favorite_comment: お気に入りコメント 
   users:
     new:
       title: ユーザー登録

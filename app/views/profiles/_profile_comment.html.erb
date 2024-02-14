@@ -13,16 +13,21 @@
           </ul>
         </div>
         <div class="ms-auto">
+        <% if current_user&.own?(comment) %>
           <%= link_to '詳細', post_path(comment.post), class: 'btn btn-primary btn-sm' %>
-          <% if current_user&.own?(comment) %>
           <%= link_to edit_post_comment_path(comment.post, comment), class: 'edit-comment-link' do %>
             <div class="btn btn-success btn-sm">編集</div>
-          <% end %>
+            <% end %>
           <%= link_to '削除',
                       post_comment_path(comment.post, comment),
                       class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
                       turbo_confirm: t('posts.delete.comfirm') }  %>
+          <% else %>
+          <div class="d-flex">
+            <%= link_to '詳細', post_path(comment.post), class: 'btn btn-primary btn-sm mx-3' %>
+            <%= render 'comment_favorites/comment_favorite_buttons', { comment: comment } %>
+         </div>
           <% end %>
         </div>
     </div>
