@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     collection do
       get 'questions', to:'profiles#questions'
       get 'tweets', to:'profiles#tweets'
+      get 'comments', to:'profiles#comments'
+      get 'favorite_posts', to:'profiles#favorite_posts'
+      get 'favorite_comments', to:'profiles#favorite_comments'
     end
   end
 
@@ -25,8 +28,6 @@ Rails.application.routes.draw do
     collection do
       get 'search', to:'posts#search'
       get  'autocomplete_word', to:'posts#autocomplete_word'
-      get :post_favorites
-      get :comment_favorites
     end
   end
 

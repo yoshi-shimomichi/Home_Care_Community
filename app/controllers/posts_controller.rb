@@ -91,7 +91,7 @@ class PostsController < ApplicationController
         format.js
       end
     end
-
+    
     private
   
     def post_params

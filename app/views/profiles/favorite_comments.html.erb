@@ -6,8 +6,8 @@
 </div>
     <div class="col-9">
       <div class="row justify-content-center">
-      <% if @posts.present? %>
-        <%= render 'profiles/profile_post', { posts: @posts } %>
+      <% if @comments.present? %>
+          <%= render 'profiles/profile_comment', { comments: @comments } %>
       <% else %>
         <p><%= t('posts.index.no_result') %></p>
       <% end %>

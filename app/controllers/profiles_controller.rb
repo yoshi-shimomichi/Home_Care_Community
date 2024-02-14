@@ -22,7 +22,18 @@ class ProfilesController < ApplicationController
       @posts = Post.where(user_id: current_user.id, post_type: :tweet)
     end
 
-  
+    def comments
+      @comments = Comment.where(user_id: current_user.id)
+    end
+
+    def favorite_posts
+      @posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+    end
+    
+    def favorite_comments
+      @comments = current_user.favorite_comments.includes(:user).order(created_at: :desc)
+    end
+    
     private
   
     def set_user
