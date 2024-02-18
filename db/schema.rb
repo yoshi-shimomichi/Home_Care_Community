@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_12_120210) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_15_004550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_120210) do
     t.index ["post_id"], name: "index_post_favorites_on_post_id"
     t.index ["user_id", "post_id"], name: "index_post_favorites_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_post_favorites_on_user_id"
+  end
+
+  create_table "post_notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id", null: false
+    t.integer "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_notifications_on_post_id"
+    t.index ["visited_id"], name: "index_post_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_post_notifications_on_visitor_id"
   end
 
   create_table "post_tags", force: :cascade do |t|

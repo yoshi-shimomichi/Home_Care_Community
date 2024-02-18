@@ -28,3 +28,8 @@ ja:
       post_type:
         question: 質問
         tweet: つぶやき
+    post_notification:
+      action:
+        comment: コメント
+        favorite: お気に入り
+        
