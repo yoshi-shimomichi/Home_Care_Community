@@ -15,8 +15,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    @comment.save
-    redirect_to post_path(@post)
+    if @comment.save
+      @post.create_notification_comment(current_user)
+      @comment.create_notification_reply(current_user) unless @comment.parent_id.nil?
+      redirect_to post_path(@post)
+    end
   end
 
   def edit

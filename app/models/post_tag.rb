@@ -1,4 +1,4 @@
 class PostTag < ApplicationRecord
   belongs_to :post
-  belongs_to :tag, dependent: :destroy
+  belongs_to :tag
 end

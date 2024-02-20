@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :comments, dependent: :destroy
   has_many :post_favorites, dependent: :destroy
+  has_many :post_notifications, dependent: :destroy
 
   mount_uploader :post_image, AvatarUploader
 
@@ -30,4 +31,28 @@ class Post < ApplicationRecord
       tags << new_post_tag
     end
   end
+
+  def create_notification_favorite(current_user)
+    temp = PostNotification.where(visitor_id: current_user.id, visited_id: user_id, post_id: id, action: :favorite)
+    if temp.blank?
+      notification = current_user.post_active_notifications.new(
+        post_id: id,
+        visited_id: user_id,
+        action: :favorite
+      )
+      notification.checked = true if notification.visitor_id == notification.visited_id
+      notification.save if notification.valid?
+    end
+  end
+
+  def create_notification_comment(current_user)
+      notification = current_user.post_active_notifications.new(
+        post_id: id,
+        visited_id: user_id,
+        action: :comment
+      )
+      notification.checked = true if notification.visitor_id == notification.visited_id
+      notification.save if notification.valid?
+  end
+
 end

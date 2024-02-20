@@ -2,6 +2,7 @@ class CommentFavoritesController < ApplicationController
   def create
     @comment = Comment.find(params[:comment_id])
     current_user.comment_favorite_join(@comment)
+    @comment.create_notification_favorite(current_user)
   end
 
   def destroy
