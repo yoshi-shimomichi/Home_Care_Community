@@ -10,8 +10,10 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :post_favorites, source: :post
   has_many :comment_favorites, dependent: :destroy
   has_many :favorite_comments, through: :comment_favorites, source: :comment
-  has_many :active_notifications, class_name: 'PostNotification', foreign_key: 'visitor_id', dependent: :destroy
-  has_many :passive_notifications, class_name: 'PostNotification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :post_active_notifications, class_name: 'PostNotification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :post_passive_notifications, class_name: 'PostNotification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :comment_active_notifications, class_name: 'CommentNotification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :comment_passive_notifications, class_name: 'CommentNotification', foreign_key: 'visited_id', dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }

@@ -17,6 +17,7 @@
             <span class="post_type_tweet"><%= @post.post_type_i18n %></span>
           <% end %>
         </div>
+      <% if logged_in? %>
       <% if current_user&.own?(@post) %>
         <div class="float-end">
           <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success btn-sm' %>
@@ -28,6 +29,7 @@
         </div>
       <% else %>
         <%= render 'post_favorites/post_favorite_buttons', { post: @post } %>
+      <% end %>
       <% end %>
     </div>
     <div class="card-body mb-1">

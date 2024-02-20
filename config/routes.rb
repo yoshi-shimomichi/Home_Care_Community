@@ -24,6 +24,11 @@ Rails.application.routes.draw do
     patch :checked, on: :member
     delete :checked_all, on: :collection
   end
+
+  resources :comment_notifications do
+    patch :checked, on: :member
+  end
+
   resource :care_persons, only: %i[new create show edit update]
   resources :posts do
     resources :comments do

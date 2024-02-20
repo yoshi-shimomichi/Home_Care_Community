@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       @post.create_notification_comment(current_user)
+      @comment.create_notification_reply(current_user) unless @comment.parent_id.nil?
       redirect_to post_path(@post)
     end
   end

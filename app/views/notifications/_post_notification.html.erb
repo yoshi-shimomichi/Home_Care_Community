@@ -5,7 +5,6 @@
           <%= notification.visitor.name %>
         </strong>
       さんが、あなたの投稿<br>
-      <% if notification.respond_to?(:post_id) %>
       <% case notification.action.to_sym %>
         <% when :favorite then %>
           <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>
@@ -14,21 +13,11 @@
             <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>
           にコメントしました
       <% end %>
-      <% else %>
-      <% case notification.action.to_sym %>
-      <% when :favorite then %>
-        <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
-        をお気に入り登録しました
-      <% when :comment then %>
-          <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
-        に返信しました
-    <% end %>
-    <% end %>
     </span>
   </div>
   <div class="small text-muted">
     <%= time_ago_in_words(notification.created_at).upcase %>
-    <%= link_to "既読済にする", checked_post_notification_path(notification), data: { turbo_method: :patch }, class:"btn btn-light fas fa-trash" %>
+    <%= link_to "既読済にする", checked_post_notification_path(notification), data: { turbo_method: :patch }, class:"btn btn-light fas fa-trash float-end" %>
   </div>
   <hr>
 </div>
