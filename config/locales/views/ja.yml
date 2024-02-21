@@ -85,6 +85,9 @@ ja:
       title: プロフィール編集
       success: ユーザーを更新しました
       failure: ユーザーを更新出来ませんでした
+  care_persons:
+    show:
+      title: 要介護者ページ
   posts:
     index:
       title: 投稿一覧

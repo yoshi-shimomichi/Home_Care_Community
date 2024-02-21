@@ -10,28 +10,32 @@
       <h1 class="float-left mb-5"><%= t('.title') %></h1>
         <div class="row">
           <div class="col">
-            <div class="row">
+            <div class="row mb-3">
               <div class="col">
                 <%= t(CarePerson.human_attribute_name(:age)) %>
-                <%= @care_person.age if @care_person.present? %>
+                <span class="bg-body-secondary"><%= @care_person.age %></span>
               </div>
-            </div>
-            <div class="row">
               <div class="col">
-                <%= t(CarePerson.human_attribute_name(:sex)) %>
-                <%= @care_person.sex if @care_person.present? %>
-              </div>
+              <%= t(CarePerson.human_attribute_name(:sex)) %>
+              <span class="bg-body-secondary"><%= @care_person.sex_i18n %></span>
+            </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col">
+              <%= t(CarePerson.human_attribute_name(:care_level)) %>
+              <span class="bg-body-secondary"><%= @care_person.care_level_i18n %></span>
             </div>
           </div>
+          </div>
         </div>
-        <div class="row">
+        <div class="row mb-3">
           <%= t(CarePerson.human_attribute_name(:bio)) %>
           <div class="border bio">
-            <%= care_person.bio if @care_person.present? %>
+            <span class="bg-body-secondary"><%= @care_person.bio %></span>
           </div>
         </div>
       <div> 
-        <%= link_to t('.button'), edit_care_persons_path, class: 'btn btn-primary float-end' %>
+        <%= link_to '編集', edit_care_persons_path, class: 'btn btn-primary float-end' %>
       </div>
     </div>
   </div>

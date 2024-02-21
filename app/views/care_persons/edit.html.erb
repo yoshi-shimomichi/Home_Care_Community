@@ -1,0 +1,50 @@
+<% content_for(:title, t('.title')) %>
+<div class="row">
+<div class="col-2">
+<%= render 'shared/sideber' %>
+</div>
+<div class="col-9">
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5"><%= t('.title') %></h1>
+      <%= form_with model: @care_person, url: care_persons_path, method: :put do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="row">
+          <div class="col">
+            <div class="row mb-3">
+              <div class="col">
+                <%= f.label :age %>
+                <%= f.text_field :age, class: "form-control" %>
+              </div>
+              <div class="col">
+                <%= f.label :sex %>
+                <%= f.radio_button :sex, :no_enter_sex %>
+                <%= f.label :sex_no_enter_sex, "未登録" %>
+                <%= f.radio_button :sex_male, :male %>
+                <%= f.label :sex_, "男性" %>
+                <%= f.radio_button :sex, :female %>
+                <%= f.label :sex_female, "女性" %>
+            </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col">
+              <%= t(CarePerson.human_attribute_name(:care_level)) %>
+              <span class="bg-body-secondary"><%= @care_person.care_level_i18n %></span>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <%= t(CarePerson.human_attribute_name(:bio)) %>
+          <div class="border bio">
+            <span class="bg-body-secondary"><%= @care_person.bio %></span>
+          </div>
+        </div>
+      <div> 
+        <%= f.submit nil, class: "btn btn-primary float-end" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
