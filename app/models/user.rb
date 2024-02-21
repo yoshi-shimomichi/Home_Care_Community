@@ -3,7 +3,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  has_one :care_persons, dependent: :destroy
+  has_one :care_person, dependent: :destroy
+  accepts_nested_attributes_for :care_person, allow_destroy: true
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :post_favorites, dependent: :destroy

@@ -1,5 +1,5 @@
 class CarePersonsController < ApplicationController
-    before_action :set_care_person, only: %i[edit update]
+    before_action :set_care_person, only: %i[show edit update]
 
     def show; end
   
@@ -17,10 +17,10 @@ class CarePersonsController < ApplicationController
     private
   
     def set_care_person
-      @care_person = CarePerson.find(user_id: current_user.id)
+      @care_person = CarePerson.find_by(user_id: current_user.id)
     end
   
     def care_person_params
-      params.require(:care_person).permit(:user_id, :age, :sex, :care_level, :bio)
+      params.require(:care_person).permit(:age, :sex, :care_level, :bio)
     end  
 end

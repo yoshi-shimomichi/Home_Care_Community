@@ -17,20 +17,20 @@
               <div class="row">
                 <div class="col">
                   <%= t(User.human_attribute_name(:name)) %>
-                  <%= current_user.name %>
+                  <span class="bg-body-secondary"><%= current_user.name %></span>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
                   <%= t(User.human_attribute_name(:email)) %>
-                  <%= current_user.email %>
+                  <span class="bg-body-secondary"><%= current_user.email %></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mb-3">
             <%= t(User.human_attribute_name(:bio)) %>
-            <div class="border bio">
+            <div class="border bio bg-body-secondary">
               <%= current_user.bio %>
             </div>
           </div>

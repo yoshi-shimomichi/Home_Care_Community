@@ -21,6 +21,12 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
+
+        <%= f.fields_for :care_person do |c| %>
+          <%= c.hidden_field :age %>
+          <%= c.hidden_field :bio %>
+        <% end %>
+
         <%= f.submit t('helpers.submit.create') , class: 'btn btn-primary' %>
       <% end %>
     </div>
