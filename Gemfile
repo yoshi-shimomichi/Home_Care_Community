@@ -58,8 +58,9 @@ gem 'rails-i18n'  #日本語化
 gem 'enum_help'
 gem 'carrierwave' #画像アップロード
 gem 'config'  #LetterOpenerWeb
-
 gem 'ransack' #検索
+gem 'high_voltage' #静的ページ作成
+
 
 
 
