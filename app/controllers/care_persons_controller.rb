@@ -7,7 +7,7 @@ class CarePersonsController < ApplicationController
   
     def update
       if @care_person.update(care_person_params)
-        redirect_to profile_path, success: t('profiles.update.success')
+        redirect_to care_persons_path, success: t('profiles.update.success')
       else
         flash.now[:danger] = t('profiles.update.failure')
         render :edit, status: :unprocessable_entity
