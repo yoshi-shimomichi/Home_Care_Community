@@ -1,10 +1,15 @@
 <%= form_with model:[@comment.post, @comment], local: true do |f|%>
   <%= render 'shared/error_messages', object: f.object %>
-  <%= f.text_field :body, class:"input input-bordered w-full bg-gray-600" %>
+  <div class="mb-3">
+  <%= f.label :body, class: "mb-1" %><span class="required"><%= t('default.required') %></span>
+  <%= f.text_area :body, class:"form-control", rows:'3' %>
+</div>
+<div class="mb-3">
   <%= f.file_field :comment_image, class: "form-control mb-3", accept: 'image/*' %>
   <%= f.hidden_field :comment_image_cache %>
+  </div>
   <div class="flex justify-end text-xs mt-1">
-    <%= link_to 'キャンセル', post_path(@comment.post), class: '' %>
-    <%= f.submit "更新", class:"ml-2" %>
+    <%= link_to 'キャンセル', post_path(@comment.post), class: 'btn' %>
+    <%= f.submit "更新", class:"ml-2 btn btn-primary faort-end" %>
   </div>
 <% end %>

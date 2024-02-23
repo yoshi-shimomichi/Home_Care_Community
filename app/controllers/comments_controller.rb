@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
+
+    if @comment.body.blank? && @comment.parent_id.present?
+      flash[:danger] = "コメント返信できませんでした。"
+      redirect_to post_path(@post)
+    end
+
     if @comment.save
       @post.create_notification_comment(current_user)
       @comment.create_notification_reply(current_user) unless @comment.parent_id.nil?
@@ -40,8 +46,8 @@ class CommentsController < ApplicationController
 
   def reply_new
     @post = Post.find(params[:post_id])
-    @comment = @post.comments
-    @comment_reply = @comment.new(comment_params)
+    @comment = Comment.find(params[:parent_id])
+    @comment_reply = Comment.new
 
     @comment_reply.user_id = current_user.id
     @comment_reply.post = @post

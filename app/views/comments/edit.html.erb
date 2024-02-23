@@ -1,12 +1,15 @@
+<% content_for(:title, t('.title')) %>
 <div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-auto">
+      <h1>コメント編集</h1>
     <div class="card mb-5" id="comment-<%= @comment.id %>">
-     
         <div class="card-header d-flex justify-content-between align-items-center">
           <%= image_tag @comment.user.avatar.url, width: '50', height: '50'  %>
           <div class="col">
             <ul class="list-inline">
-              <li><i class="bi bi-person"></i><%= @comment.user.name %></li>
-              <li><i class="bi bi-calendar"></i><%= l @comment.created_at, format: :short %></li>
+              <li><%= @comment.user.name %></li>
+              <li><%= l @comment.created_at, format: :short %></li>
             </ul>
           </div>
         </div>

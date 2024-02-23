@@ -5,8 +5,8 @@
         <%= image_tag post.user.avatar.url, class: 'post_index_image' %>
         <div class="col-2">
           <ul class="list-inline">
-            <li><i class="bi bi-person"></i><%= post.user.name %></li>
-            <li><i class="bi bi-calendar"></i><%= l post.created_at, format: :short %></li>
+            <li><%= post.user.name %></li>
+            <li><%= l post.created_at, format: :short %></li>
           </ul>
         </div>
         <div class="col-2">
@@ -18,12 +18,12 @@
         </div>
       </div>
       <div class="card-body">
-        <%= post.body %>
+        <%= post.body.truncate(50) %>
       </div>
       <div class="card-footer">
         <% if post.tags.present? %> 
           <% post.tags.each do |tag| %>
-            <%= link_to tag.name, posts_path(tag_id: tag.id), class: "badge rounded-pill bg-primary text-decoration-none text-white" %>
+            <span class="badge rounded-pill bg-primary text-white"><%= tag.name %></span>
           <% end %>
         <% end %>
       </div>
