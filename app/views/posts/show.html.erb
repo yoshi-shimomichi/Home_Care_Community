@@ -38,13 +38,15 @@
     <% if @post.post_image.present? %>
       <%= image_tag @post.post_image.url, class: 'post_show_image' %>
     <% end %>
+    <div class="card-footer">
     <% if @post.tags.present? %> 
-      <div class="card-footer">
+      
         <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "badge rounded-pill bg-primary text-decoration-none text-white" %>
+          <span class="badge rounded-pill bg-primary text-white"><%= tag.name %></span>
         <% end %>
-      </div>
+      
     <% end %>
+    </div>
   </div>
   <div class="card">
     <div class="card-header">

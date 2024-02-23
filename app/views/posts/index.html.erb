@@ -9,6 +9,7 @@
         <p><%= t('posts.index.no_result') %></p>
       <% end %>
       </div>
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
