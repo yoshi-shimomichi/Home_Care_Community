@@ -1,0 +1,22 @@
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.17.1/ext/bootsnap
+/Users/shimotsumichiyoshihiro/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.17.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-mh33x4 sitelibdir\=./.gem.20240228-9322-mh33x4 clean
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.17.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-mh33x4 sitelibdir\=./.gem.20240228-9322-mh33x4
+compiling bootsnap.c
+bootsnap.c:822:10: warning: unused variable 'contents' [-Wunused-variable]
+  char * contents = NULL;
+         ^
+1 warning generated.
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.17.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-mh33x4 sitelibdir\=./.gem.20240228-9322-mh33x4 install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20240228-9322-mh33x4/bootsnap
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.17.1/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-mh33x4 sitelibdir\=./.gem.20240228-9322-mh33x4 clean

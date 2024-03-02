@@ -1,0 +1,16 @@
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+/Users/shimotsumichiyoshihiro/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-g7vu4a sitelibdir\=./.gem.20240228-9322-g7vu4a clean
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-g7vu4a sitelibdir\=./.gem.20240228-9322-g7vu4a
+make: Nothing to be done for `all'.
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-g7vu4a sitelibdir\=./.gem.20240228-9322-g7vu4a install
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-g7vu4a sitelibdir\=./.gem.20240228-9322-g7vu4a clean

@@ -1,0 +1,18 @@
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/Users/shimotsumichiyoshihiro/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-nc8dvk sitelibdir\=./.gem.20240228-9322-nc8dvk clean
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-nc8dvk sitelibdir\=./.gem.20240228-9322-nc8dvk
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-nc8dvk sitelibdir\=./.gem.20240228-9322-nc8dvk install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20240228-9322-nc8dvk
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-nc8dvk sitelibdir\=./.gem.20240228-9322-nc8dvk clean

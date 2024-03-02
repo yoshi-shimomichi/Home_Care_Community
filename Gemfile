@@ -68,7 +68,9 @@ gem 'high_voltage' #静的ページ作成
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 
-
+gem 'dotenv-rails'
+gem 'fog-aws'
+gem 'aws-sdk-s3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -77,6 +79,11 @@ group :development, :test do
   gem 'letter_opener_web', '~> 2.0' #開発環境で実際にメールが送られないようにする
 
   gem 'pry-rails'
+
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rubocop', require:false
+  gem 'rubocop-rails', require:false
 
   # http://localhost:3000/letter_opener
 end
@@ -90,11 +97,18 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+
+  gem 'rubocop-performance', require: false
+
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem "webdrivers"
+  
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development

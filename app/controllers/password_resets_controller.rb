@@ -15,22 +15,6 @@ class PasswordResetsController < ApplicationController
     redirect_to root_path, success: t('.success')
   end
 
-#  def update
-#    @token = params[:id]
-#    @user = User.load_from_reset_password_token(@token)
-
-#    return not_authenticated if @user.blank?
-
-#    @user.password_confirmation = params[:user][:password_confirmation]
-
-#    if @user.change_password(params[:user][:password])
-#      redirect_to login_path, success: t('.success')
-#    else
-#      flash.now[:danger] = t('.failure')
-#      render :edit, status: :unprocessable_entity
-#    end
-#  end
-
   def update
     @token = params[:id]
     @user = User.load_from_reset_password_token(@token)
@@ -38,8 +22,7 @@ class PasswordResetsController < ApplicationController
     return not_authenticated if @user.blank?
   
     @user.password_confirmation = params[:user][:password_confirmation]
-  
-    # パスワードとパスワード確認が空でない場合のみ更新を試みる
+
     if params[:user][:password].present? && @user.change_password(params[:user][:password])
       redirect_to login_path, success: t('.success')
     else
@@ -47,7 +30,6 @@ class PasswordResetsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  
 end
 
 

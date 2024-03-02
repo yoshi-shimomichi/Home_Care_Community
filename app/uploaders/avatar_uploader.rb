@@ -4,8 +4,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
+
+  if Rails.env.development? # 開発環境の場合
+    storage :file
+  elsif Rails.env.test? # テスト環境の場合
+    storage :file
+  else # 本番環境の場合
+    storage :fog
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -45,7 +53,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg"
-  # end
+  def filename
+    original_filename if original_filename
+  end
+
+#  def filename
+#    if original_filename.present?
+#      time = Time.now
+#      name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+#      name.downcase
+#    end
+#  end
 end

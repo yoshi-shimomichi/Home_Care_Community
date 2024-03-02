@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>Home_care_Commnunity</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
   </head>
-
+  
   <body>
-  <% if logged_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/before_login_header' %>
-  <% end %>
-  <%= render 'shared/flash_messages'%>
-  <%= yield %>
-  <%= render 'shared/footer' %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <%= render 'shared/flash_messages'%>
+    <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

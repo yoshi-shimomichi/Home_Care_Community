@@ -2,13 +2,9 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.toptext{
-    color: #00ffcc;
-    background-color: black;
-}
-
 body{
     font-size: 18px;
+    background-color: #fef7f0;
 }
 
 header{
@@ -50,7 +46,7 @@ header{
 
 .post_show_image{
     width: auto;
-    max-height: 500px;
+    max-height: 300px;
     object-fit: contain;
 }
 

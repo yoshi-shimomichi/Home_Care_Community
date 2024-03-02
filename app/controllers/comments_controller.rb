@@ -28,9 +28,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @comment.update(comment_params)
@@ -52,7 +50,6 @@ class CommentsController < ApplicationController
     @comment_reply.user_id = current_user.id
     @comment_reply.post = @post
     @comment_reply.parent_id = @comment.id
-
   end
 
   def reply_create
@@ -63,7 +60,7 @@ class CommentsController < ApplicationController
     @comment_reply.user_id = current_user.id
     @comment_reply.post = @post
     @comment_reply.parent_id = @comment.id
-
+    
     if @comment_reply.save
       redirect_to post_path(@post)
     else
@@ -80,7 +77,7 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
   end
-    
+
   def comment_params
     params.require(:comment).permit(:body, :comment_image, :comment_image_cache, :remove_comment_image, :parent_id).merge(post_id: params[:post_id])
   end

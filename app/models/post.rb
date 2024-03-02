@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   validates :post_type, presence: true
   validates :body, length: { maximum: 65_535 }, presence: true
-  
+
   enum post_type: { question: 0, tweet: 1 }
 
   def post_favorited_by?(user)
@@ -54,5 +54,4 @@ class Post < ApplicationRecord
       notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
   end
-
 end
