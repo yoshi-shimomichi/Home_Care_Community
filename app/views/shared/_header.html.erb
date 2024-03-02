@@ -12,9 +12,9 @@
         <%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete },class: 'link-dark text-decoration-none' %>
         <%= link_to post_notifications_path, class: 'link-dark text-decoration-none' do %>
           <% if unchecked_notifications.any? %>
-          <i class="fas fa-bell notice"></i>
+            <i class="fas fa-bell notice"></i>
           <% else %>
-          <i class="far fa-bell"></i>
+            <i class="far fa-bell"></i>
           <% end %>
           通知一覧
         <% end %>

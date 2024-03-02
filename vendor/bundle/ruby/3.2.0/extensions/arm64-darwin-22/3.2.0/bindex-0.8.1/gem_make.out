@@ -1,0 +1,18 @@
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/shimotsumichiyoshihiro/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-6w3ade sitelibdir\=./.gem.20240228-9322-6w3ade clean
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-6w3ade sitelibdir\=./.gem.20240228-9322-6w3ade
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-6w3ade sitelibdir\=./.gem.20240228-9322-6w3ade install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20240228-9322-6w3ade/skiptrace/internal
+
+current directory: /Users/shimotsumichiyoshihiro/Home_Care_Community/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20240228-9322-6w3ade sitelibdir\=./.gem.20240228-9322-6w3ade clean

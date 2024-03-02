@@ -4,7 +4,7 @@
         <strong>
           <%= notification.visitor.name %>
         </strong>
-      さんが、あなたの投稿<br>
+        さんが、あなたの投稿<br>
       <% case notification.action.to_sym %>
         <% when :favorite then %>
           <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>

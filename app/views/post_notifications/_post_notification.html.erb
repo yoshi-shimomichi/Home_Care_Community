@@ -1,29 +1,29 @@
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
     <span>
-        <strong>
-          <%= notification.visitor.name %>
-        </strong>
+      <strong>
+        <%= notification.visitor.name %>
+      </strong>
       さんが、あなたの投稿<br>
       <% if notification.respond_to?(:post_id) %>
-      <% case notification.action.to_sym %>
-        <% when :favorite then %>
-          <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>
-          をお気に入り登録しました
-        <% when :comment then %>
+        <% case notification.action.to_sym %>
+          <% when :favorite then %>
             <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>
-          にコメントしました
-      <% end %>
+            をお気に入り登録しました
+          <% when :comment then %>
+            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><br>
+            にコメントしました
+        <% end %>
       <% else %>
-      <% case notification.action.to_sym %>
-      <% when :favorite then %>
-        <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
-        をお気に入り登録しました
-      <% when :comment then %>
-          <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
-        に返信しました
-    <% end %>
-    <% end %>
+        <% case notification.action.to_sym %>
+          <% when :favorite then %>
+            <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
+            をお気に入り登録しました
+          <% when :comment then %>
+            <%= link_to 'あなたの投稿', notification.comment.post, style: "font-weight: bold;" %><br>
+            に返信しました
+        <% end %>
+      <% end %>
     </span>
   </div>
   <div class="small text-muted">

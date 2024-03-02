@@ -24,5 +24,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :bio, :avatar, 
       care_person_attributes: [:id, :age, :sex, :care_level, :bio])
   end
-  
 end

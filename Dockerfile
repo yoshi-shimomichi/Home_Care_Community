@@ -1,7 +1,8 @@
 ARG RUBY_VERSION=ruby:3.2.2
 ARG NODE_VERSION=19
 
-FROM $RUBY_VERSION
+FROM --platform=linux/amd64 ruby:3.2.2
+
 ARG RUBY_VERSION
 ARG NODE_VERSION
 ENV LANG C.UTF-8
@@ -20,3 +21,5 @@ COPY yarn.lock /app/yarn.lock
 RUN bundle install
 RUN yarn install
 COPY . /app
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
