@@ -5,15 +5,13 @@ require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
-    config.fog_directory  = 'home-care-community' # 作成したバケット名を記述
+    config.fog_directory  = 'home-care-community'
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: 'AKIAUIFMKK6C5GMW5CGT',
-      aws_secret_access_key: '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',
-      region: 'ap-northeast-1',   # アジアパシフィック(東京)を選択した場合
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      region: 'ap-northeast-1',
+      region: ENV['AWS_DEFAULT_REGION'],
       path_style: true
     }
 end 
-
-#      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'], # 環境変数
-#      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'], # 環境変数
