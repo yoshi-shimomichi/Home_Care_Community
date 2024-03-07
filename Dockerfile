@@ -3,6 +3,8 @@ ARG NODE_VERSION=19
 
 FROM --platform=linux/amd64 ruby:3.2.2
 
+ENV RAILS_ENV=production
+
 ARG RUBY_VERSION
 ARG NODE_VERSION
 ENV LANG C.UTF-8
