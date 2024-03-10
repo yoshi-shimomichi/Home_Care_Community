@@ -31,7 +31,7 @@ ja:
         care_5: 要介護5
   header:
     login: ログイン
-    create_user: 新規登録 
+    create_user: ユーザー登録 
     logout: ログアウト
     create_post: 新規投稿
     mypage: マイページ
