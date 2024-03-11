@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class="container">
   <div class="card mb-5">
     <div class="card-header d-flex">
@@ -20,12 +21,12 @@
       <% if logged_in? %>
         <% if current_user&.own?(@post) %>
           <div class="float-end">
-            <%= link_to '編集', edit_post_path(@post), class: 'btn btn-success btn-sm' %>
-            <%= link_to '削除',
+            <%= link_to t('helpers.submit.edit'), edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+            <%= link_to t('helpers.submit.delete'),
                       post_path(@post),
                       class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
-                      turbo_confirm: t('posts.delete.comfirm') }  %>
+                      turbo_confirm: t('helpers.submit.delete_comfirm') }  %>
           </div>
         <% else %>
           <%= render 'post_favorites/post_favorite_buttons', { post: @post } %>

@@ -9,7 +9,7 @@
         <% if @comments.present? %>
           <%= render 'profiles/profile_comment', {comments: @comments} %>
         <% else %>
-          <p>コメントがありません</p>
+          <p><%= t('.no_result') %></p>
         <% end %>
       </div>
     </div>

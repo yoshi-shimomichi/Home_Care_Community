@@ -12,13 +12,13 @@
       <% if current_user&.own?(comment) %>
         <div class="text-end">
           <%= link_to edit_post_comment_path(comment.post, comment), class: 'edit-comment-link' do %>
-            <div class="btn btn-success btn-sm">編集</div>
+            <div class="btn btn-success btn-sm"><%= t('helpers.submit.edit') %></div>
           <% end %>
-          <%= link_to '削除',
+          <%= link_to t('helpers.submit.delete'),
                       post_comment_path(comment.post, comment),
                       class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
-                      turbo_confirm: t('posts.delete.comfirm') }  %>
+                      turbo_confirm: t('helpers.submit.delete_comfirm') }  %>
         </div>
       <% else %>
         <%= render 'comment_favorites/comment_favorite_buttons', { comment: comment } %>
@@ -30,7 +30,7 @@
     </div>
     <div class="card-footer">
       <%= link_to new_post_comment_path(post, comment, parent_id: comment.id), class: 'reply-comment-link' do %>
-        <div class="btn btn-success btn-sm float-end">返信する</div>
+        <div class="btn btn-success btn-sm float-end"><%= t('helpers.submit.reply') %></div>
       <% end %>
     </div>
   <% end %>

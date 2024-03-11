@@ -17,7 +17,7 @@
   </div>
   <div class="small text-muted">
     <%= time_ago_in_words(notification.created_at).upcase %>
-    <%= link_to "既読済にする", checked_post_notification_path(notification), data: { turbo_method: :patch }, class:"btn btn-light fas fa-trash float-end" %>
+    <%= link_to t('post_notifications.index.delete'), checked_post_notification_path(notification), data: { turbo_method: :patch }, class:"btn btn-light fas fa-trash float-end border" %>
   </div>
   <hr>
 </div>

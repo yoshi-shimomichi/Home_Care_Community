@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class="container pt-3">
   <%= render 'search_form' %>
   <div class="row">
@@ -6,7 +7,7 @@
         <% if @posts.present? %>
           <%= render @posts %>
         <% else %>
-          <p>検索結果がありませんでした</p>
+          <p class="text-center"><%= t('.no_result') %></p>
         <% end %>
       </div>
     </div>

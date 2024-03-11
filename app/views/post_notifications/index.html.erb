@@ -1,9 +1,10 @@
+<% content_for(:title, t('.title')) %>
 <div class="container">
   <div class='row justify-content-center mx-auto'>
     <div class="notification_box">
-      <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
-      <%= link_to "全通知をクリア", checked_all_post_notifications_path, data: { turbo_method: :delete, 
-             turbo_confirm: '通知を消しますか' }, class:"btn btn-light fas fa-trash" %>
+      <h2 class="mb-3 text-center"><%= t('.title') %></h2>
+      <%= link_to t('.all_delete'), checked_all_post_notifications_path, data: { turbo_method: :delete, 
+             turbo_confirm: t('.all_delete_comfirm') }, class:"btn btn-light fas fa-trash fw-bold border" %>
       <% if @notifications.any? %>
         <% @notifications.each do |notification| %>
           <% if notification.respond_to?(:post_id) %>
@@ -13,7 +14,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <p class="text-center">通知はありません</p>
+        <p class="text-center"><%= t('.no_result') %></p>
       <% end %>
     </div>
   </div>

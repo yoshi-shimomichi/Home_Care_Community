@@ -10,13 +10,13 @@
     <% if current_user&.own?(reply) %>
       <div class="text-end">
         <%= link_to edit_post_comment_path(reply.post, reply), class: 'edit-comment-link' do %>
-          <div class="btn btn-success btn-sm">編集</div>
+          <div class="btn btn-success btn-sm"><%= t('helpers.submit.edit') %></div>
         <% end %>
-        <%= link_to '削除',
+        <%= link_to t('helpers.submit.delete'),
                 post_comment_path(reply.post, reply),
                 class: 'btn btn-danger btn-sm',
                 data: { turbo_method: :delete, 
-                turbo_confirm: t('posts.delete.comfirm') }  %>
+                turbo_confirm: t('helpers.submit.delete_comfirm') }  %>
       </div>
     <% else %>
       <%= render 'comment_favorites/comment_favorite_buttons', { comment: reply } %>
