@@ -18,7 +18,9 @@
             <h3 class="text-black fw-bold">ユーザー登録をして投稿しよう</h3>
             投稿、コメント、お気に入り登録ができるようになります<br>
             また、マイページから自身の投稿・お気に入りした投稿を確認できます
-            <%= link_to t('header.create_user'), new_user_path, class: 'btn btn-primary my-3' %>
+            <div class="my-2">
+              <%= link_to t('header.create_user'), new_user_path, class: 'btn btn-primary my-3' %>
+            </div>
           </div>
         </div>
       </div>

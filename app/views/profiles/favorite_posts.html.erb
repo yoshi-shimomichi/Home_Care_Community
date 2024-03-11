@@ -9,7 +9,7 @@
         <% if @posts.present? %>
           <%= render 'profiles/profile_post', { posts: @posts } %>
         <% else %>
-          <p>お気に入り登録したコメントはありません</p>
+          <p><%= t('.no_result') %></p>
         <% end %>
       </div>
     </div>

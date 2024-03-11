@@ -9,7 +9,7 @@
         <% if @posts.present? %>
           <%= render 'profiles/profile_post', { posts: @posts } %>
         <% else %>
-          <p>投稿がありません</p>
+          <p><%= t('.no_result') %></p>
         <% end %>
       </div>
     </div>

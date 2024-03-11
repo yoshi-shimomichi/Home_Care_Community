@@ -21,16 +21,16 @@
         </div>
         <div class="ms-auto">
           <% if current_user&.own?(post) %>
-            <%= link_to '詳細', post_path(post), class: 'btn btn-primary btn-sm mx-3' %>
-            <%= link_to '編集', edit_post_path(post), class: 'btn btn-success btn-sm' %>
-            <%= link_to '削除',
+            <%= link_to t('helpers.submit.detail'), post_path(post), class: 'btn btn-primary btn-sm' %>
+            <%= link_to t('helpers.submit.edit'), edit_post_path(post), class: 'btn btn-success btn-sm' %>
+            <%= link_to t('helpers.submit.delete'),
                       post_path(post),
                       class: 'btn btn-danger btn-sm',
                       data: { turbo_method: :delete, 
-                      turbo_confirm: t('posts.delete.comfirm') }  %>
+                      turbo_confirm: t('helpers.submit.detail_comfirm') }  %>
           <% else %>
             <div class="d-flex">
-              <%= link_to '詳細', post_path(post), class: 'btn btn-primary btn-sm mx-3' %>
+              <%= link_to t('helpers.submit.detail'), post_path(post), class: 'btn btn-primary btn-sm mx-3' %>
               <%= render 'post_favorites/post_favorite_buttons', { post: post } %>
             </div>
           <% end %>

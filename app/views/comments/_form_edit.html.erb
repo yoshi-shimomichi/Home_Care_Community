@@ -9,7 +9,7 @@
     <%= f.hidden_field :comment_image_cache %>
   </div>
   <div class="flex justify-end text-xs mt-1">
-    <%= link_to 'キャンセル', post_path(@comment.post), class: 'btn' %>
-    <%= f.submit "更新", class:"ml-2 btn btn-primary faort-end" %>
+    <%= link_to t('helpers.submit.cancel'), post_path(@comment.post), class: 'btn' %>
+    <%= f.submit t('helpers.submit.update'), class:"ml-2 btn btn-primary faort-end" %>
   </div>
 <% end %>
