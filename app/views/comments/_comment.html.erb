@@ -25,7 +25,7 @@
       <% end %>
     </div>
     <div class="card-body mb-1">
-      <%= simple_format(comment.body) %>
+      <%= raw Rinku.auto_link(simple_format(h(comment.body)), :urls, 'target="_black"') %>
       <%= image_tag comment.comment_image.url, width: '100' if comment.comment_image.present? %>
     </div>
     <div class="card-footer">

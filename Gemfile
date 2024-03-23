@@ -68,9 +68,12 @@ gem 'high_voltage' #静的ページ作成
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 
+#ストレージ aws_S3
 gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'aws-sdk-s3'
+
+gem 'rinku' #自動リンク
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="card-body">
-        <%= comment.body %>
+        <%= raw Rinku.auto_link(simple_format(h(comment.body)), :urls, 'target="_black"') %>
       </div>
     </div>
   </div>
